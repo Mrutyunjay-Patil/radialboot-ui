@@ -1,0 +1,210 @@
+/* src/styles/components/form.css */
+
+/* Base Form Styles */
+.themed-form-item {
+    margin-bottom: 1rem;
+  }
+  
+  .themed-form-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+    font-weight: 500;
+  }
+  
+  .themed-form-label-error {
+    color: hsl(var(--destructive));
+  }
+  
+  .themed-form-description {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-top: 0.25rem;
+  }
+  
+  .themed-form-message {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: hsl(var(--destructive));
+    margin-top: 0.25rem;
+  }
+  
+  /* Input styling - to be used with FormControl */
+  .form-control.themed-input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius, 0.375rem);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-control.themed-input:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+    outline: 0;
+  }
+  
+  .form-control.themed-input.is-invalid,
+  .form-control.themed-input[aria-invalid="true"] {
+    border-color: hsl(var(--destructive));
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+  
+  .form-control.themed-input.is-invalid:focus,
+  .form-control.themed-input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 0.25rem hsl(var(--destructive) / 0.25);
+  }
+  
+  /* Select styling */
+  .form-select.themed-select {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    border-radius: var(--radius, 0.375rem);
+  }
+  
+  .form-select.themed-select:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  .form-select.themed-select.is-invalid,
+  .form-select.themed-select[aria-invalid="true"] {
+    border-color: hsl(var(--destructive));
+  }
+  
+  /* Checkbox and Radio styling */
+  .form-check-input.themed-checkbox,
+  .form-check-input.themed-radio {
+    background-color: hsl(var(--background));
+    border-color: hsl(var(--border));
+  }
+  
+  .form-check-input.themed-checkbox:checked,
+  .form-check-input.themed-radio:checked {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+  }
+  
+  .form-check-input.themed-checkbox:focus,
+  .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  .form-check-label.themed-check-label {
+    color: hsl(var(--foreground));
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .themed-form-label {
+    color: hsl(var(--foreground));
+  }
+  
+  body.dark .themed-form-description {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  body.dark .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  body.dark .form-control.themed-input {
+    background-color: hsl(var(--input));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .form-select.themed-select {
+    background-color: hsl(var(--input));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .form-check-input.themed-checkbox,
+  body.dark .form-check-input.themed-radio {
+    background-color: hsl(var(--input));
+    border-color: hsl(var(--border));
+  }
+  
+  /* Theme-specific styles */
+  /* Onyx Theme */
+  body.theme-onyx .themed-form-label-error,
+  body.theme-onyx .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Fog Theme */
+  body.theme-fog .themed-form-label-error,
+  body.theme-fog .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Graphite Theme */
+  body.theme-graphite .themed-form-label-error,
+  body.theme-graphite .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Sandstone Theme */
+  body.theme-sandstone .themed-form-label-error,
+  body.theme-sandstone .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Steel Theme */
+  body.theme-steel .themed-form-label-error,
+  body.theme-steel .themed-form-message {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Focus styles for dark mode by theme */
+  body.theme-onyx.dark .form-control.themed-input:focus,
+  body.theme-onyx.dark .form-select.themed-select:focus,
+  body.theme-onyx.dark .form-check-input.themed-checkbox:focus,
+  body.theme-onyx.dark .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  body.theme-fog.dark .form-control.themed-input:focus,
+  body.theme-fog.dark .form-select.themed-select:focus,
+  body.theme-fog.dark .form-check-input.themed-checkbox:focus,
+  body.theme-fog.dark .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  body.theme-graphite.dark .form-control.themed-input:focus,
+  body.theme-graphite.dark .form-select.themed-select:focus,
+  body.theme-graphite.dark .form-check-input.themed-checkbox:focus,
+  body.theme-graphite.dark .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  body.theme-sandstone.dark .form-control.themed-input:focus,
+  body.theme-sandstone.dark .form-select.themed-select:focus,
+  body.theme-sandstone.dark .form-check-input.themed-checkbox:focus,
+  body.theme-sandstone.dark .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  body.theme-steel.dark .form-control.themed-input:focus,
+  body.theme-steel.dark .form-select.themed-select:focus,
+  body.theme-steel.dark .form-check-input.themed-checkbox:focus,
+  body.theme-steel.dark .form-check-input.themed-radio:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }

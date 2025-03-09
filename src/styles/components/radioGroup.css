@@ -1,0 +1,155 @@
+/* src/styles/components/radio-group.css */
+
+/* 
+ * This file provides theming for Bootstrap's radio buttons
+ * and Radix UI RadioGroup component
+ */
+
+/* == RADIX UI RADIO GROUP BASE STYLES == */
+[role="radiogroup"] {
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  /* == RADIX UI RADIO BUTTON STYLING == */
+  [role="radio"].form-check-input {
+    appearance: none;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    background-origin: border-box;
+    user-select: none;
+    flex-shrink: 0;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    transition: all .15s ease-in-out;
+  }
+  
+  /* Radio indicator (circle in the middle) */
+  [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(var(--primary));
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%230d6efd'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  /* Focus state styling */
+  [role="radio"].form-check-input:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+    outline: 0;
+  }
+  
+  /* Hide the Radix UI indicator */
+  [role="radio"].form-check-input [data-radix-radio-indicator] {
+    display: none !important;
+  }
+  
+  /* DARK MODE ADJUSTMENTS */
+  body.dark [role="radio"].form-check-input {
+    background-color: hsl(var(--input));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(var(--primary));
+    background-color: hsl(var(--input));
+  }
+  
+  /* THEME-SPECIFIC STYLING */
+  /* Onyx Theme */
+  body.theme-onyx [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(220 90% 40%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(220, 90%, 40%)'/%3e%3c/svg%3e");
+  }
+  
+  body.theme-onyx.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(0, 0%, 98%)'/%3e%3c/svg%3e");
+  }
+  
+  /* Fog Theme */
+  body.theme-fog [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(190 70% 40%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(190, 70%, 40%)'/%3e%3c/svg%3e");
+  }
+  
+  body.theme-fog.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(0, 0%, 98%)'/%3e%3c/svg%3e");
+  }
+  
+  /* Graphite Theme */
+  body.theme-graphite [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(0 84.2% 20%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(0, 84.2%, 20%)'/%3e%3c/svg%3e");
+  }
+  
+  body.theme-graphite.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(0, 0%, 98%)'/%3e%3c/svg%3e");
+  }
+  
+  /* Sandstone Theme */
+  body.theme-sandstone [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(40 95% 50%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(40, 95%, 50%)'/%3e%3c/svg%3e");
+  }
+  
+  body.theme-sandstone.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(40 95% 50%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(40, 95%, 50%)'/%3e%3c/svg%3e");
+  }
+  
+  /* Steel Theme */
+  body.theme-steel [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(170 80% 30%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(170, 80%, 30%)'/%3e%3c/svg%3e");
+  }
+  
+  body.theme-steel.dark [role="radio"].form-check-input[data-state="checked"] {
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='hsl(0, 0%, 98%)'/%3e%3c/svg%3e");
+  }
+  
+  /* LAYOUT HELPERS */
+  /* D-flex alignment helpers for radio + label combinations */
+  .d-flex.align-items-center [role="radio"],
+  .d-flex.align-items-start [role="radio"] {
+    margin-top: 0.125rem;
+  }
+  
+  .d-flex .themed-form-label,
+  .d-flex label {
+    margin-bottom: 0;
+  }
+  
+  /* Radio group stacking */
+  .radio-group-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Radio group inline */
+  .radio-group-inline {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+  }
+  
+  .radio-group-inline > div {
+    margin-right: 1rem;
+  }
+  
+  /* Form integration alignments */
+  .form-item [role="radio"] {
+    margin-top: 0.125rem;
+  }

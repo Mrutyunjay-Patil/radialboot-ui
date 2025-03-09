@@ -1,0 +1,65 @@
+/* src/styles/components/label.css */
+
+/* Base Label Styles */
+.themed-form-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: hsl(var(--foreground));
+  }
+  
+  /* When linked to a disabled control/input */
+  .themed-form-label.peer-disabled,
+  .form-check-input:disabled ~ .themed-form-label,
+  input:disabled ~ .themed-form-label,
+  textarea:disabled ~ .themed-form-label,
+  select:disabled ~ .themed-form-label {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  
+  /* Required indicator */
+  .themed-form-label.required::after {
+    content: "*";
+    margin-left: 0.25rem;
+    color: hsl(var(--destructive));
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .themed-form-label {
+    color: hsl(var(--foreground));
+  }
+  
+  /* When used with form-check */
+  .form-check-label.themed-form-label {
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  
+  /* Theme-specific styling */
+  /* Onyx Theme */
+  body.theme-onyx .themed-form-label.required::after {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Fog Theme */
+  body.theme-fog .themed-form-label.required::after {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Graphite Theme */
+  body.theme-graphite .themed-form-label.required::after {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Sandstone Theme */
+  body.theme-sandstone .themed-form-label.required::after {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Steel Theme */
+  body.theme-steel .themed-form-label.required::after {
+    color: hsl(var(--destructive));
+  }

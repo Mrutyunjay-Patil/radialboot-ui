@@ -1,0 +1,206 @@
+/* Bootstrap form label alignment fixes */
+.form-check-label {
+    line-height: 1.5;
+    margin-bottom: 0;  
+  }
+  
+  /* Enable better alignment in flex layouts */
+  .d-flex .form-check {
+    padding-left: 0;
+    min-height: auto;
+  }
+  
+  .d-flex .form-check .form-check-input {
+    float: none;
+    margin-left: 0;
+  }.form-check-reverse {
+    padding-right: 1.5em;
+    padding-left: 0;
+    text-align: right;
+  }
+  
+  .form-check-reverse .form-check-input {
+    float: right;
+    margin-right: -1.5em;
+    margin-left: 0;
+  }
+  
+  .form-check-inline {
+    display: inline-block;
+    margin-right: 1rem;
+  }/* D-flex alignment helpers for checkbox + label combinations */
+  .d-flex.align-items-center .form-check-input,
+  .d-flex.align-items-center [role="checkbox"],
+  .d-flex.align-items-start .form-check-input,
+  .d-flex.align-items-start [role="checkbox"] {
+    margin-top: 0.125rem; /* Slight adjustment for flex containers */
+  }
+  
+  /* Specific alignment for documentation examples */
+  .d-flex .themed-form-label,
+  .d-flex label {
+    margin-bottom: 0; /* Remove bottom margin in flex context */
+  }/* src/styles/components/checkbox.css */
+  
+  /* 
+   * This file provides theming for Bootstrap's checkbox/radio inputs
+   * and ensures Radix UI checkbox components match native styling
+   */
+  
+  /* == STANDARD HTML CHECKBOXES == */
+  /* Customizing Bootstrap's form-check-input for theme compatibility */
+  .form-check-input:checked {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+  }
+  
+  .form-check-input:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+  }
+  
+  /* == RADIX UI CHECKBOX COMPONENT == */
+  /* Make Radix UI checkbox match Bootstrap's form-check-input */
+  [role="checkbox"].form-check-input {
+    appearance: none;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    background-origin: border-box;
+    user-select: none;
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em; /* Match Bootstrap's margin-top */
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0.25em;
+    transition: all .15s ease-in-out;
+  }
+  
+  /* Checked state styling */
+  [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  /* Focus state styling */
+  [role="checkbox"].form-check-input:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25);
+    outline: 0;
+  }
+  
+  /* UNIVERSAL DARK MODE ADJUSTMENTS */
+  /* Applied to both native and Radix checkboxes */
+  body.dark .form-check-input,
+  body.dark [role="checkbox"].form-check-input {
+    background-color: hsl(var(--input));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .form-check-input:checked,
+  body.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* THEME-SPECIFIC STYLING */
+  /* Theme styling for both native and Radix checkboxes */
+  
+  /* Onyx Theme */
+  body.theme-onyx .form-check-input:checked,
+  body.theme-onyx [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(220 90% 40%);
+    border-color: hsl(220 90% 40%);
+  }
+  
+  body.theme-onyx.dark .form-check-input:checked,
+  body.theme-onyx.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(0 0% 98%);
+    border-color: hsl(0 0% 98%);
+    /* For dark mode, we need to change the check color to match theme */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='hsl(220, 90%, 40%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  
+  /* Fog Theme */
+  body.theme-fog .form-check-input:checked,
+  body.theme-fog [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(190 70% 40%);
+    border-color: hsl(190 70% 40%);
+  }
+  
+  body.theme-fog.dark .form-check-input:checked,
+  body.theme-fog.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(0 0% 98%);
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='hsl(190, 70%, 40%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  
+  /* Graphite Theme */
+  body.theme-graphite .form-check-input:checked,
+  body.theme-graphite [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(0 84.2% 20%);
+    border-color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-graphite.dark .form-check-input:checked,
+  body.theme-graphite.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(0 0% 98%);
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='hsl(0, 84.2%, 20%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  
+  /* Sandstone Theme */
+  body.theme-sandstone .form-check-input:checked,
+  body.theme-sandstone [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(40 95% 50%);
+    border-color: hsl(40 95% 50%);
+  }
+  
+  body.theme-sandstone.dark .form-check-input:checked,
+  body.theme-sandstone.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(40 95% 50%);
+    border-color: hsl(40 95% 50%);
+    /* For Sandstone dark, we need to use a dark checkmark for visibility */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='hsl(20, 14.3%, 4.1%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  
+  /* Steel Theme */
+  body.theme-steel .form-check-input:checked,
+  body.theme-steel [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(170 80% 30%);
+    border-color: hsl(170 80% 30%);
+  }
+  
+  body.theme-steel.dark .form-check-input:checked,
+  body.theme-steel.dark [role="checkbox"].form-check-input[data-state="checked"] {
+    background-color: hsl(0 0% 98%);
+    border-color: hsl(0 0% 98%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='hsl(170, 80%, 30%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  }
+  
+  /* Hide the Radix UI indicator child elements since we're using background-image */
+  [role="checkbox"].form-check-input [data-radix-checkbox-indicator] {
+    display: none !important;
+  }
+  
+  /* Form Check and Label Integration */
+  .form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+    line-height: 1.5;
+  }
+  
+  /* Ensure checkbox is properly aligned in form-check layout */
+  .form-check .form-check-input {
+    float: left;
+    margin-left: -1.5em;
+    margin-top: 0.25em;
+  }

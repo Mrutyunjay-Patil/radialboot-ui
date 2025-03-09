@@ -1,0 +1,500 @@
+/* src/styles/components/select.css */
+
+/* Select Base Styles */
+.select-trigger {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    height: 2.5rem;
+    font-size: 0.875rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+    line-height: 1.5;
+    /* Remove Bootstrap's default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: none !important;
+  }
+  
+  .select-trigger:focus {
+    border-color: hsl(var(--ring));
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem hsl(var(--ring) / 0.25);
+  }
+  
+  .select-trigger[data-placeholder] {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  /* Ensure the trigger text also doesn't overflow */
+  .select-value {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100% - 2rem); /* Leave room for the chevron */
+  }
+  
+  .select-trigger[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .select-icon {
+    height: 1rem;
+    width: 1rem;
+    opacity: 0.5;
+    pointer-events: none;
+    margin-left: 0.5rem;
+  }
+  
+  /* Portal - ensure it's positioned correctly */
+  [data-radix-select-portal] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  [data-radix-select-portal] * {
+    pointer-events: auto;
+  }
+  
+  /* Select Content Styling */
+  .select-content {
+    z-index: 9999; /* High z-index to appear above other elements */
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--popover)) !important; /* Force background color */
+    color: hsl(var(--popover-foreground));
+    /* Enhanced box shadow for better visual separation */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+    min-width: var(
+      --radix-select-trigger-width
+    ); /* At minimum, match trigger width */
+    max-width: max(
+      var(--radix-select-trigger-width),
+      350px
+    ); /* Allow expansion up to reasonable limit */
+    animation-duration: 0.2s;
+    animation-name: selectFadeIn;
+    /* Ensure it's above other content */
+    position: relative;
+  }
+  
+  .select-content[data-state="open"] {
+    animation-name: selectFadeIn;
+  }
+  
+  .select-content[data-state="closed"] {
+    animation-name: selectFadeOut;
+  }
+  
+  .select-content-popper {
+    margin-top: 0.5rem;
+  }
+  
+  /* Viewport (scrollable area) - Fixed height for scrolling */
+  .select-viewport {
+    padding: 0.25rem;
+    /* Set a fixed height to ensure scrolling */
+    max-height: 220px !important;
+    overflow-y: auto !important;
+    /* Ensure content is visible */
+    background-color: inherit !important;
+    /* Add horizontal scrolling for extremely long content */
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .select-viewport-popper {
+    width: 100%;
+    min-width: var(--radix-select-trigger-width);
+  }
+  
+  .select-label {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Improved checkbox styling for multiple select */
+  .select-item {
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    user-select: none;
+    outline: none;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    cursor: pointer;
+    padding: 0.375rem 0.75rem; /* Removed left padding - handled by container */
+    position: relative;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    background-color: transparent;
+    width: 100%;
+    min-height: 2.25rem;
+  }
+  
+  /* Container for icon and text - improved layout */
+  .select-item-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .select-item:focus,
+  .select-item[data-highlighted] {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+  
+  .select-item[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  /* Container specifically for the check icon */
+  .select-item-icon-container {
+    flex: 0 0 20px; /* Reduced from 28px for better proportions */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+    position: relative;
+    border-radius: 3px; /* Squared corners for checkboxes */
+  }
+  
+  .select-check-icon {
+    height: 1rem;
+    width: 1rem;
+    color: currentColor;
+    /* Ensure proper positioning */
+    display: block;
+    /* Add subtle animation for a professional touch */
+    transition: transform 0.15s ease-in-out;
+  }
+  
+  /* Add a slight animation when item is selected */
+  .select-item[data-state="checked"] .select-check-icon {
+    transform: scale(1.1);
+  }
+  
+  /* Add a subtle background for the checked item */
+  .select-item[data-state="checked"] {
+    font-weight: 500;
+  }
+  
+  /* Special styling for the icon container when checked */
+  .select-item[data-state="checked"] .select-item-icon-container {
+    background-color: hsla(var(--primary) / 0.1);
+  }
+  
+  /* Style for the item text element */
+  .select-item-text {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    flex: 1;
+    /* No left margin needed - handled by icon container */
+  }
+  
+  .select-scroll-button {
+    color: hsl(var(--foreground));
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 100%; /* Ensure button spans full width */
+    background-color: inherit !important; /* Maintain background consistency */
+  }
+  
+  .select-scroll-icon {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  .select-separator {
+    background-color: hsl(var(--border));
+    margin: 0.25rem -0.25rem;
+    height: 1px;
+  }
+  
+  /* Enhanced checkbox styling for multiple select */
+  .select-multiple .select-item {
+    position: relative;
+    background-color: transparent;
+  }
+  
+  .select-multiple .select-item:hover {
+    background-color: hsla(var(--primary) / 0.05);
+  }
+  
+  /* Style for selected items */
+  .select-multiple .select-item-selected,
+  .select-multiple .select-item[data-state="checked"] {
+    background-color: hsla(var(--primary) / 0.08);
+  }
+  
+  .select-multiple .select-item-icon-container {
+    position: relative;
+    border: 1px solid hsla(var(--muted-foreground) / 0.7);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background-color: #fff;
+    overflow: visible;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Checked checkbox styling - support both data-state and our custom class */
+  .select-multiple .select-item-icon-selected,
+  .select-multiple .select-item[data-state="checked"] .select-item-icon-container {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+  
+  /* Checkmark icon */
+  .select-multiple .select-check-icon {
+    height: 12px;
+    width: 12px;
+    color: white;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  /* Show check for both data-state and our manual method */
+  .select-multiple .select-check-visible,
+  .select-multiple .select-item[data-state="checked"] .select-check-icon {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  
+  /* Style for multi-select value text */
+  .select-value-text {
+    font-size: 0.875rem;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  /* Theme-based styling */
+  .themed-select-trigger {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  .themed-select-trigger:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 0.2rem hsl(var(--ring) / 0.25);
+  }
+  
+  .themed-select-content {
+    background-color: hsl(var(--popover));
+    color: hsl(var(--popover-foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  .themed-select-item:hover {
+    background-color: hsl(var(--accent) / 0.1);
+  }
+  
+  .themed-select-item:focus,
+  .themed-select-item[data-highlighted] {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+  
+  /* Animation keyframes */
+  @keyframes selectFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes selectFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+  
+  /* Dark Mode Adjustments */
+  body.dark .themed-select-trigger {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .themed-select-content {
+    background-color: hsl(var(--popover)) !important; /* Force background in dark mode */
+    color: hsl(var(--popover-foreground));
+    border-color: hsl(var(--border));
+    /* Enhanced shadow for dark mode */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  body.dark .themed-select-item:hover {
+    background-color: hsl(var(--accent) / 0.2);
+  }
+  
+  body.dark .themed-select-item:focus,
+  body.dark .themed-select-item[data-highlighted] {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+  
+  /* Fix for dark mode */
+  body.dark .select-multiple .select-item-icon-container {
+    background-color: hsla(var(--background) / 0.2);
+    border-color: hsla(var(--muted-foreground) / 0.4);
+  }
+  
+  body.dark .select-multiple .select-item[data-state="checked"] .select-item-icon-container {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Fix for focus without checkbox appearance change */
+  .select-item:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  /* Improve focus indicator */
+  .select-multiple .select-item:focus-visible {
+    box-shadow: 0 0 0 2px hsla(var(--primary) / 0.2);
+    outline: none;
+  }
+  
+  /* Theme-specific styling */
+  /* Onyx theme */
+  body.theme-onyx .select-item:focus,
+  body.theme-onyx .select-item[data-highlighted] {
+    background-color: hsl(220 90% 40%);
+    color: hsl(0 0% 98%);
+  }
+  
+  body.theme-onyx.dark .select-item:focus,
+  body.theme-onyx.dark .select-item[data-highlighted] {
+    background-color: hsl(0 0% 98%);
+    color: hsl(220 90% 40%);
+  }
+  
+  /* Fog theme */
+  body.theme-fog .select-item:focus,
+  body.theme-fog .select-item[data-highlighted] {
+    background-color: hsl(190 70% 40%);
+    color: hsl(0 0% 98%);
+  }
+  
+  body.theme-fog.dark .select-item:focus,
+  body.theme-fog.dark .select-item[data-highlighted] {
+    background-color: hsl(0 0% 98%);
+    color: hsl(190 70% 40%);
+  }
+  
+  /* Graphite theme */
+  body.theme-graphite .select-item:focus,
+  body.theme-graphite .select-item[data-highlighted] {
+    background-color: hsl(0 84.2% 20%);
+    color: hsl(0 0% 98%);
+  }
+  
+  body.theme-graphite.dark .select-item:focus,
+  body.theme-graphite.dark .select-item[data-highlighted] {
+    background-color: hsl(0 0% 98%);
+    color: hsl(0 84.2% 20%);
+  }
+  
+  /* Sandstone theme */
+  body.theme-sandstone .select-item:focus,
+  body.theme-sandstone .select-item[data-highlighted] {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+  }
+  
+  body.theme-sandstone.dark .select-item:focus,
+  body.theme-sandstone.dark .select-item[data-highlighted] {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+  }
+  
+  /* Steel theme */
+  body.theme-steel .select-item:focus,
+  body.theme-steel .select-item[data-highlighted] {
+    background-color: hsl(170 80% 30%);
+    color: hsl(0 0% 98%);
+  }
+  
+  body.theme-steel.dark .select-item:focus,
+  body.theme-steel.dark .select-item[data-highlighted] {
+    background-color: hsl(0 0% 98%);
+    color: hsl(170 80% 30%);
+  }
+  
+  /* Theme-specific indicator styling in light mode */
+  body.theme-onyx .select-item[data-state="checked"] .select-item-indicator,
+  body.theme-fog .select-item[data-state="checked"] .select-item-indicator,
+  body.theme-graphite .select-item[data-state="checked"] .select-item-indicator,
+  body.theme-steel .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(var(--primary) / 0.1);
+  }
+  
+  body.theme-sandstone .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(40 95% 50% / 0.1);
+  }
+  
+  /* Theme-specific accent color fixes in dark mode */
+  body.theme-onyx.dark .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(0 0% 98% / 0.15);
+  }
+  
+  body.theme-fog.dark .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(0 0% 98% / 0.15);
+  }
+  
+  body.theme-graphite.dark .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(0 0% 98% / 0.15);
+  }
+  
+  body.theme-sandstone.dark .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(40 95% 50% / 0.15);
+  }
+  
+  body.theme-steel.dark .select-item[data-state="checked"] .select-item-indicator {
+    background-color: hsla(0 0% 98% / 0.15);
+  }

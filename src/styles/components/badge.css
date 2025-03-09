@@ -1,0 +1,207 @@
+/* src/styles/components/badge.css */
+
+/* Base Badge Styles */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+    text-align: center;
+    border-radius: 9999px; /* ensure rounded-pill effect */
+  }
+  
+  /* Size Variants */
+  .badge-sm {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .badge-lg {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.65rem;
+  }
+  
+  /* Override Bootstrap badge variants to use CSS custom properties */
+  .badge-primary {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+  }
+  
+  .badge-secondary {
+    background-color: #6c757d !important;
+    color: #fff !important;
+  }
+  
+  .badge-success {
+    background-color: #198754 !important;
+    color: #fff !important;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+  }
+  
+  .badge-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+  }
+  
+  .badge-info {
+    background-color: #0dcaf0 !important;
+    color: #212529 !important;
+  }
+  
+  .badge-light {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+  }
+  
+  .badge-dark {
+    background-color: #212529 !important;
+    color: #fff !important;
+  }
+  
+  /* Outline Variant */
+  .badge-outline {
+    background-color: transparent !important;
+    color: #212529 !important;
+    border-color: currentColor !important;
+  }
+  
+  /* Themed Badge - Using theme variables */
+  .badge-themed {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: transparent !important;
+  }
+  
+  /* Badge links */
+  a.badge {
+    text-decoration: none;
+  }
+  
+  a.badge:hover,
+  a.badge:focus {
+    text-decoration: none;
+  }
+  
+  /* Badge with icon alignment */
+  .badge .icon {
+    margin-right: 0.25rem;
+  }
+  
+  .badge .icon:last-child:not(:first-child) {
+    margin-right: 0;
+    margin-left: 0.25rem;
+  }
+  
+  /* Custom close button for dismissible badges */
+  .badge .btn-close {
+    margin-left: 0.25rem;
+    font-size: 0.5rem;
+    padding: 0.1rem;
+    margin-right: -0.1rem;
+  }
+  
+  .badge .btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+  
+  /* Focus styles for accessibility */
+  .badge:focus {
+    outline: 2px solid rgba(13, 110, 253, 0.25);
+    outline-offset: 2px;
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .badge-outline {
+    color: #f8f9fa !important;
+    border-color: rgba(248, 249, 250, 0.5) !important;
+  }
+  
+  /* Theme-specific styling for dark mode */
+  body.dark .badge-light {
+    background-color: #343a40 !important;
+    color: #f8f9fa !important;
+  }
+  
+  body.dark .badge-dark {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
+  }
+  
+  /* Themed Badge - Theme-specific colors */
+  /* Onyx theme specific adjustments */
+  body.theme-onyx .badge-themed {
+    background-color: hsl(220 90% 40%) !important;
+    color: hsl(0 0% 98%) !important;
+  }
+  
+  body.theme-onyx.dark .badge-themed {
+    background-color: hsl(0 0% 98%) !important;
+    color: hsl(220 90% 40%) !important;
+  }
+  
+  /* Fog theme specific adjustments */
+  body.theme-fog .badge-themed {
+    background-color: hsl(190 70% 40%) !important;
+    color: hsl(0 0% 98%) !important;
+  }
+  
+  body.theme-fog.dark .badge-themed {
+    background-color: hsl(0 0% 98%) !important;
+    color: hsl(190 70% 40%) !important;
+  }
+  
+  /* Graphite theme specific adjustments */
+  body.theme-graphite .badge-themed {
+    background-color: hsl(0 84.2% 20%) !important;
+    color: hsl(0 0% 98%) !important;
+  }
+  
+  body.theme-graphite.dark .badge-themed {
+    background-color: hsl(0 0% 98%) !important;
+    color: hsl(0 84.2% 20%) !important;
+  }
+  
+  /* Sandstone theme specific adjustments */
+  body.theme-sandstone .badge-themed {
+    background-color: hsl(40 95% 50%) !important;
+    color: hsl(20 14.3% 4.1%) !important;
+  }
+  
+  body.theme-sandstone.dark .badge-themed {
+    background-color: hsl(40 95% 50%) !important;
+    color: hsl(20 14.3% 4.1%) !important;
+  }
+  
+  /* Steel theme specific adjustments */
+  body.theme-steel .badge-themed {
+    background-color: hsl(170 80% 30%) !important;
+    color: hsl(0 0% 98%) !important;
+  }
+  
+  body.theme-steel.dark .badge-themed {
+    background-color: hsl(0 0% 98%) !important;
+    color: hsl(170 80% 30%) !important;
+  }
+  
+  /* Fix for Bootstrap badge overrides */
+  .badge.text-bg-primary, 
+  .badge.text-bg-secondary,
+  .badge.text-bg-success,
+  .badge.text-bg-danger,
+  .badge.text-bg-warning,
+  .badge.text-bg-info,
+  .badge.text-bg-light,
+  .badge.text-bg-dark {
+    color: inherit !important;
+    background-color: inherit !important;
+  }

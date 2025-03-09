@@ -1,0 +1,521 @@
+/* src/styles/components/breadcrumb.css */
+
+/* Base styles for breadcrumb */
+.breadcrumb-nav {
+    width: 100%;
+  }
+  
+  .breadcrumb {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .breadcrumb-item {
+    gap: 0.5rem;
+  }
+  
+  /* Remove default divider from Bootstrap */
+  .breadcrumb-item + .breadcrumb-item::before {
+    display: none;
+  }
+  
+  /* Links styling */
+  .breadcrumb-link {
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.8; /* Slightly faded by default */
+  }
+  
+  .breadcrumb-link:hover {
+    color: hsl(var(--foreground));
+    text-decoration: underline;
+    opacity: 1; /* Full opacity on hover */
+  }
+  
+  /* Active/Current page styling */
+  .breadcrumb-page {
+    color: hsl(var(--primary));
+    font-weight: 500;
+    opacity: 1; /* Full opacity for current page */
+  }
+  
+  /* Separator styling */
+  .breadcrumb-separator {
+    display: inline-flex;
+    align-items: center;
+    color: hsl(var(--muted-foreground));
+    opacity: 0.6;
+  }
+  
+  .breadcrumb-separator-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Ellipsis styling */
+  .breadcrumb-ellipsis {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    position: relative;
+    border-radius: var(--radius);
+    opacity: 0.8; /* Slightly faded by default */
+    transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .breadcrumb-ellipsis:hover {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--accent) / 0.1);
+    opacity: 1; /* Full opacity on hover */
+  }
+  
+  .breadcrumb-ellipsis-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Dropdown for ellipsis */
+  .breadcrumb-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.875rem;
+    background-color: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .breadcrumb-dropdown.show {
+    display: block;
+  }
+  
+  .breadcrumb-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    clear: both;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .breadcrumb-dropdown-item:hover {
+    background-color: hsl(var(--accent) / 0.1);
+    color: hsl(var(--primary));
+    text-decoration: none;
+  }
+  
+  /* Mobile drawer for ellipsis */
+  .breadcrumb-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: hsl(var(--background));
+    border-top: 1px solid hsl(var(--border));
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    padding: 1rem;
+    z-index: 1050;
+    box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .breadcrumb-drawer.show {
+    transform: translateY(0);
+  }
+  
+  .breadcrumb-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+  }
+  
+  .breadcrumb-drawer-backdrop.show {
+    display: block;
+  }
+  
+  .breadcrumb-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid hsl(var(--border) / 0.2);
+  }
+  
+  .breadcrumb-drawer-title {
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
+  
+  .breadcrumb-drawer-close {
+    background: transparent;
+    border: none;
+    color: hsl(var(--muted-foreground));
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .breadcrumb-drawer-close:hover {
+    background-color: hsl(var(--accent) / 0.1);
+    color: hsl(var(--foreground));
+  }
+  
+  .breadcrumb-drawer-item {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    margin: 0.25rem 0;
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .breadcrumb-drawer-item:hover {
+    background-color: hsl(var(--accent) / 0.1);
+    color: hsl(var(--primary));
+    text-decoration: none;
+  }
+  
+  /* Variants */
+  .breadcrumb-sm {
+    font-size: 0.75rem;
+  }
+  
+  .breadcrumb-sm .breadcrumb-separator-icon,
+  .breadcrumb-sm .breadcrumb-ellipsis-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  
+  .breadcrumb-lg {
+    font-size: 1rem;
+  }
+  
+  .breadcrumb-lg .breadcrumb-separator-icon,
+  .breadcrumb-lg .breadcrumb-ellipsis-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Themed variations */
+  .breadcrumb-themed .breadcrumb-link {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.8;
+  }
+  
+  .breadcrumb-themed .breadcrumb-link:hover {
+    color: hsl(var(--primary));
+    opacity: 1;
+  }
+  
+  .breadcrumb-themed .breadcrumb-page {
+    color: hsl(var(--primary));
+    font-weight: 500;
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .breadcrumb-link {
+    opacity: 0.85;
+    color: hsl(0 0% 80%);
+  }
+  
+  body.dark .breadcrumb-link:hover {
+    opacity: 1;
+    color: hsl(0 0% 95%);
+  }
+  
+  body.dark .breadcrumb-page {
+    opacity: 1;
+    color: hsl(0 0% 95%); /* Light color without excessive effects */
+    background-color: hsl(var(--primary) / 0.2);
+  }
+  
+  body.dark .breadcrumb-ellipsis {
+    opacity: 0.85;
+    color: hsl(0 0% 80%);
+  }
+  
+  body.dark .breadcrumb-ellipsis:hover {
+    background-color: hsl(var(--accent) / 0.2);
+    opacity: 1;
+    color: hsl(0 0% 95%);
+  }
+  
+  body.dark .breadcrumb-dropdown,
+  body.dark .breadcrumb-drawer {
+    background-color: hsl(var(--background));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .breadcrumb-dropdown-item:hover,
+  body.dark .breadcrumb-drawer-item:hover,
+  body.dark .breadcrumb-drawer-close:hover {
+    background-color: hsl(var(--accent) / 0.2);
+  }
+  
+  /* Make dropdown and drawer more visible in dark mode */
+  body.dark .breadcrumb-dropdown {
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark .breadcrumb-drawer {
+    border-top: 1px solid hsl(var(--border));
+    box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .breadcrumb {
+      gap: 0.25rem;
+    }
+    
+    .breadcrumb-item {
+      gap: 0.25rem;
+    }
+    
+    .breadcrumb-ellipsis {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+  
+  /* Theme-specific styles for primary colors */
+  
+  /* Onyx Theme */
+  .theme-onyx .breadcrumb-page {
+    color: hsl(220 90% 40%); /* Blue primary */
+    background-color: hsl(220 90% 40% / 0.1); /* Matching background */
+  }
+  
+  .theme-onyx .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-onyx .breadcrumb-dropdown-item:hover,
+  .theme-onyx .breadcrumb-drawer-item:hover {
+    color: hsl(220 90% 40%);
+  }
+  
+  .theme-onyx.dark .breadcrumb-page {
+    color: hsl(219 90% 65%); /* BRIGHTER blue - properly adjusted */
+    background-color: hsl(220 90% 40% / 0.2);
+  }
+  
+  .theme-onyx.dark .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-onyx.dark .breadcrumb-dropdown-item:hover,
+  .theme-onyx.dark .breadcrumb-drawer-item:hover {
+    color: hsl(219 90% 65%);
+  }
+  
+  /* Fog Theme */
+  .theme-fog .breadcrumb-page {
+    color: hsl(190 70% 40%); /* Cyan primary */
+    background-color: hsl(190 70% 40% / 0.1); /* Matching background */
+  }
+  
+  .theme-fog .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-fog .breadcrumb-dropdown-item:hover,
+  .theme-fog .breadcrumb-drawer-item:hover {
+    color: hsl(190 70% 40%);
+  }
+  
+  .theme-fog.dark .breadcrumb-page {
+    color: hsl(190 70% 65%); /* BRIGHTER cyan - properly adjusted */
+    background-color: hsl(190 70% 40% / 0.2);
+  }
+  
+  .theme-fog.dark .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-fog.dark .breadcrumb-dropdown-item:hover,
+  .theme-fog.dark .breadcrumb-drawer-item:hover {
+    color: hsl(190 70% 65%);
+  }
+  
+  /* Graphite Theme */
+  .theme-graphite .breadcrumb-page {
+    color: hsl(0 84.2% 20%); /* Red primary */
+    background-color: hsl(0 84.2% 20% / 0.1); /* Matching background */
+  }
+  
+  .theme-graphite .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-graphite .breadcrumb-dropdown-item:hover,
+  .theme-graphite .breadcrumb-drawer-item:hover {
+    color: hsl(0 84.2% 20%);
+  }
+  
+  .theme-graphite.dark .breadcrumb-page {
+    color: hsl(0 84.2% 65%); /* BRIGHTER red - properly adjusted */
+    background-color: hsl(0 84.2% 30% / 0.2);
+  }
+  
+  .theme-graphite.dark .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-graphite.dark .breadcrumb-dropdown-item:hover,
+  .theme-graphite.dark .breadcrumb-drawer-item:hover {
+    color: hsl(0 84.2% 65%);
+  }
+  
+  /* Sandstone Theme */
+  .theme-sandstone .breadcrumb-page {
+    color: hsl(40 95% 50%); /* Amber primary */
+    background-color: hsl(40 95% 50% / 0.1); /* Matching background */
+  }
+  
+  .theme-sandstone .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-sandstone .breadcrumb-dropdown-item:hover,
+  .theme-sandstone .breadcrumb-drawer-item:hover {
+    color: hsl(40 95% 50%);
+  }
+  
+  .theme-sandstone.dark .breadcrumb-page {
+    color: hsl(40 95% 65%); /* BRIGHTER amber - properly adjusted */
+    background-color: hsl(40 95% 50% / 0.2);
+  }
+  
+  .theme-sandstone.dark .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-sandstone.dark .breadcrumb-dropdown-item:hover,
+  .theme-sandstone.dark .breadcrumb-drawer-item:hover {
+    color: hsl(40 95% 65%);
+  }
+  
+  /* Steel Theme */
+  .theme-steel .breadcrumb-page {
+    color: hsl(170 80% 30%); /* Teal primary */
+    background-color: hsl(170 80% 30% / 0.1); /* Matching background */
+  }
+  
+  .theme-steel .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-steel .breadcrumb-dropdown-item:hover,
+  .theme-steel .breadcrumb-drawer-item:hover {
+    color: hsl(170 80% 30%);
+  }
+  
+  .theme-steel.dark .breadcrumb-page {
+    color: hsl(170 80% 65%); /* BRIGHTER teal - properly adjusted */
+    background-color: hsl(170 80% 35% / 0.2);
+  }
+  
+  .theme-steel.dark .breadcrumb-themed .breadcrumb-link:hover,
+  .theme-steel.dark .breadcrumb-dropdown-item:hover,
+  .theme-steel.dark .breadcrumb-drawer-item:hover {
+    color: hsl(170 80% 65%);
+  }
+  
+  /* ==============================================
+     General dark mode overrides
+     ============================================== */
+  
+  /* Override Bootstrap's text-body class in dark mode */
+  body.dark .text-body {
+    --bs-text-opacity: 1;
+    color: hsl(0 0% 95%) !important; /* Light color to ensure visibility */
+  }
+  
+  /* Theme-specific text-body overrides for each theme */
+  .theme-onyx.dark .text-body {
+    color: hsl(219 90% 65%) !important; /* Bright blue */
+  }
+  
+  .theme-fog.dark .text-body {
+    color: hsl(190 70% 65%) !important; /* Bright cyan */
+  }
+  
+  .theme-graphite.dark .text-body {
+    color: hsl(0 84.2% 65%) !important; /* Bright red */
+  }
+  
+  .theme-sandstone.dark .text-body {
+    color: hsl(40 95% 65%) !important; /* Bright amber */
+  }
+  
+  .theme-steel.dark .text-body {
+    color: hsl(170 80% 65%) !important; /* Bright teal */
+  }
+  
+  /* Additional enhancements */
+  
+  /* Active breadcrumb indicators */
+  .breadcrumb-list:hover .breadcrumb-link {
+    opacity: 0.6; /* Further fade out non-active items when hovering the list */
+  }
+  
+  .breadcrumb-list:hover .breadcrumb-link:hover {
+    opacity: 1; /* Restore full opacity for hovered link */
+  }
+  
+  /* Animated transitions */
+  .breadcrumb-link,
+  .breadcrumb-ellipsis,
+  .breadcrumb-dropdown-item,
+  .breadcrumb-drawer-item,
+  .breadcrumb-drawer-close {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Current item highlight - subtle background */
+  .breadcrumb-page {
+    padding: 0.1rem 0.4rem;
+    margin: -0.1rem -0.4rem;
+    border-radius: var(--radius);
+    background-color: hsl(var(--primary) / 0.1);
+  }
+  
+  /* Dark mode adjustments for current item highlight */
+  body.dark .breadcrumb-page {
+    background-color: hsl(var(--primary) / 0.2); 
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.3);
+    font-weight: 500;
+  }
+  
+  /* Drawer items improvements */
+  .breadcrumb-drawer-content {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  /* Visual indicator for dropdown to improve usability */
+  .breadcrumb-ellipsis::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: hsl(var(--primary) / 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .breadcrumb-ellipsis:hover::after {
+    opacity: 1;
+  }

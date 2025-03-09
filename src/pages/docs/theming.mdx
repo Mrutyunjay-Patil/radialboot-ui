@@ -1,0 +1,140 @@
+# Theming
+
+RadialBoot UI includes a powerful theming system that supports multiple themes and dark/light modes.
+
+## Available Themes
+
+- **Onyx**: Dark, Sleek, Premium with Blue Accent
+- **Fog**: Light, Clean, Misty with Cyan Accent
+- **Graphite**: Modern, Industrial, Professional with Red Accent
+- **Sandstone**: Warm, Earthy, Natural with Amber Accent
+- **Steel**: Industrial, Refined, Strong with Teal Accent
+
+## Using Themes
+
+### 1. Setup ThemeProvider
+
+The ThemeProvider is automatically set up in `_app.tsx`, but if you want to use it in your own project, wrap your application with the ThemeProvider:
+
+```jsx
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThemeProvider defaultTheme="onyx" defaultMode="light">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+```
+
+### 2. Use ThemeSwitcher Component
+
+Add the ThemeSwitcher component to let users change themes:
+
+```jsx
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+
+function MyPage() {
+  return (
+    <div>
+      <ThemeSwitcher />
+      {/* Your content */}
+    </div>
+  );
+}
+```
+
+### 3. Use useTheme Hook
+
+Access theme variables in your components:
+
+```jsx
+import { useTheme } from "@/components/ThemeProvider";
+
+function MyComponent() {
+  const { theme, mode, setTheme, setMode, toggleMode } = useTheme();
+  
+  return (
+    <div>
+      <p>Current theme: {theme}</p>
+      <p>Current mode: {mode}</p>
+      <button onClick={() => setTheme('fog')}>Switch to Fog</button>
+      <button onClick={toggleMode}>Toggle Mode</button>
+    </div>
+  );
+}
+```
+
+## Adding Theme Support to Components
+
+Components in RadialBoot UI automatically support themes through CSS variables.
+
+### CSS Variable Structure
+
+Our theme system uses HSL color format variables that can be accessed in your CSS:
+
+```css
+/* Example of using theme variables */
+.my-component {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+/* For active/hover states */
+.my-component:hover {
+  background-color: hsl(var(--primary-hover));
+}
+```
+
+### Theme-Aware Component Example
+
+```jsx
+// A simple themed card component
+const ThemedCard = ({ children, className }) => {
+  return (
+    <div className={`themed-card ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+// CSS for the themed card
+/*
+.themed-card {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+*/
+```
+
+## Theme CSS Variables
+
+Here's a list of all available CSS variables for each theme:
+
+- `--background`: Page background color
+- `--foreground`: Text color
+- `--card`: Card background color
+- `--card-foreground`: Card text color
+- `--popover`: Popover background color
+- `--popover-foreground`: Popover text color
+- `--primary`: Primary action color
+- `--primary-hover`: Hover state for primary actions
+- `--primary-active`: Active state for primary actions
+- `--primary-foreground`: Text on primary backgrounds
+- `--secondary`: Secondary action color
+- `--secondary-foreground`: Text on secondary backgrounds
+- `--muted`: Muted background color
+- `--muted-foreground`: Text on muted backgrounds
+- `--accent`: Accent color
+- `--accent-foreground`: Text on accent backgrounds
+- `--destructive`: Error/danger color
+- `--destructive-foreground`: Text on destructive backgrounds
+- `--border`: Border color
+- `--input`: Input background color
+- `--ring`: Focus ring color
+- `--radius`: Border radius for elements

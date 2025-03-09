@@ -1,0 +1,120 @@
+/* src/styles/components/switch.css */
+
+/* Base switch styles */
+.switch-input {
+    position: relative;
+    display: inline-flex;
+    width: 2.75rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    background-color: hsl(var(--muted));
+    padding: 0 2px; /* Add padding to contain the thumb */
+  }
+  
+  .switch-input[data-state="checked"] {
+    background-color: hsl(var(--primary));
+  }
+  
+  .switch-input[data-state="unchecked"] {
+    background-color: hsl(var(--muted));
+  }
+  
+  .switch-input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem hsl(var(--ring) / 0.25);
+  }
+  
+  .switch-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  /* Thumb styles */
+  .switch-thumb {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+    pointer-events: none;
+    border-radius: 9999px;
+    background-color: hsl(var(--background));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    /* Fix the default position to be at the left */
+    transform: translateX(0);
+  }
+  
+  .switch-input[data-state="checked"] .switch-thumb {
+    /* Adjusted to keep the thumb within the container */
+    transform: translateX(1.25rem);
+  }
+  
+  .switch-input[data-state="unchecked"] .switch-thumb {
+    transform: translateX(0);
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .switch-input {
+    /* Better contrast in dark mode */
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+  }
+  
+  body.dark .switch-input[data-state="checked"] {
+    background-color: hsl(var(--primary));
+    border-color: transparent;
+  }
+  
+  body.dark .switch-thumb {
+    background-color: white;
+  }
+  
+  /* Theme-specific styling */
+  /* Onyx Theme */
+  body.theme-onyx .switch-input[data-state="checked"] {
+    background-color: hsl(220 90% 40%);
+  }
+  
+  body.theme-onyx.dark .switch-input[data-state="checked"] {
+    background-color: hsl(220 90% 40%);
+  }
+  
+  /* Fog Theme */
+  body.theme-fog .switch-input[data-state="checked"] {
+    background-color: hsl(190 70% 40%);
+  }
+  
+  body.theme-fog.dark .switch-input[data-state="checked"] {
+    background-color: hsl(190 70% 40%);
+  }
+  
+  /* Graphite Theme */
+  body.theme-graphite .switch-input[data-state="checked"] {
+    background-color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-graphite.dark .switch-input[data-state="checked"] {
+    background-color: hsl(0 0% 80%);
+  }
+  
+  /* Sandstone Theme */
+  body.theme-sandstone .switch-input[data-state="checked"] {
+    background-color: hsl(40 95% 50%);
+  }
+  
+  body.theme-sandstone.dark .switch-input[data-state="checked"] {
+    background-color: hsl(40 95% 50%);
+  }
+  
+  /* Steel Theme */
+  body.theme-steel .switch-input[data-state="checked"] {
+    background-color: hsl(170 80% 30%);
+  }
+  
+  body.theme-steel.dark .switch-input[data-state="checked"] {
+    background-color: hsl(170 80% 30%);
+  }

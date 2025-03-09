@@ -1,0 +1,304 @@
+/* src/styles/components/steps.css */
+
+/* Container for the entire steps component */
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Remove the continuous line from container */
+  /* We'll add individual lines to each step instead */
+  /* .steps-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.25rem;
+    width: 1px;
+    background-color: hsl(var(--border));
+    transform: translateX(-50%);
+    z-index: -1;
+  } */
+  
+  /* Individual step item */
+  .steps-item {
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Add connecting line for each step */
+  .steps-item:not(.steps-item-last)::after {
+    content: "";
+    position: absolute;
+    top: 2rem; /* Aligns with bottom of indicator */
+    bottom: -1rem; /* Extends down to next step */
+    left: 1rem; /* Aligns with center of indicator */
+    width: 1px;
+    background-color: hsl(var(--border));
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  
+  /* Last step doesn't need bottom padding */
+  .steps-item.steps-item-last {
+    padding-bottom: 0;
+  }
+  
+  /* Step header (indicator + title) */
+  .steps-header {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  
+  /* Make header clickable in accordion mode */
+  .steps-header-clickable {
+    cursor: pointer;
+  }
+  
+  .steps-header-clickable:hover .steps-title {
+    color: hsl(var(--primary));
+  }
+  
+  /* Step indicator (circle or bullet) */
+  .steps-indicator {
+    width: 2rem;
+    height: 2rem;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  /* Active step indicator */
+  .steps-indicator-active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Completed step indicator */
+  .steps-indicator-completed {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Smaller bullet variant */
+  .steps-indicator-bullet {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  /* Check mark icon for bullets */
+  .steps-indicator-check {
+    opacity: 1;
+    display: block;
+  }
+  
+  /* Step title */
+  .steps-title {
+    padding-top: 0.25rem;
+    color: hsl(var(--foreground));
+    transition: color 0.2s ease;
+  }
+  
+  /* Step content area */
+  .steps-content {
+    overflow: hidden;
+    max-height: 9999px;
+    opacity: 1;
+    transform-origin: top;
+    transform: scaleY(1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Content area when collapsed */
+  .steps-content-collapsed {
+    max-height: 0;
+    opacity: 0;
+    transform: scaleY(0);
+    margin-top: 0;
+  }
+  
+  /* Inner content padding */
+  .steps-content-inner {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .steps-item:not(.steps-item-last)::after {
+    background-color: hsl(var(--border));
+  }
+  
+  body.dark .steps-indicator {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .steps-indicator-active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  body.dark .steps-indicator-completed {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Theme-specific styles - Onyx theme */
+  body.theme-onyx .steps-indicator-active {
+    background-color: hsl(220 90% 40%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(220 90% 40%);
+  }
+  
+  body.theme-onyx .steps-indicator-completed {
+    background-color: hsl(220 90% 40%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(220 90% 40%);
+  }
+  
+  body.theme-onyx.dark .steps-indicator-active {
+    background-color: hsl(0 0% 98%);
+    color: hsl(220 90% 40%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  body.theme-onyx.dark .steps-indicator-completed {
+    background-color: hsl(0 0% 98%);
+    color: hsl(220 90% 40%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  /* Theme-specific styles - Fog theme */
+  body.theme-fog .steps-indicator-active {
+    background-color: hsl(190 70% 40%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(190 70% 40%);
+  }
+  
+  body.theme-fog .steps-indicator-completed {
+    background-color: hsl(190 70% 40%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(190 70% 40%);
+  }
+  
+  body.theme-fog.dark .steps-indicator-active {
+    background-color: hsl(0 0% 98%);
+    color: hsl(190 70% 40%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  body.theme-fog.dark .steps-indicator-completed {
+    background-color: hsl(0 0% 98%);
+    color: hsl(190 70% 40%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  /* Theme-specific styles - Graphite theme */
+  body.theme-graphite .steps-indicator-active {
+    background-color: hsl(0 84.2% 20%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-graphite .steps-indicator-completed {
+    background-color: hsl(0 84.2% 20%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-graphite.dark .steps-indicator-active {
+    background-color: hsl(0 0% 98%);
+    color: hsl(0 84.2% 20%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  body.theme-graphite.dark .steps-indicator-completed {
+    background-color: hsl(0 0% 98%);
+    color: hsl(0 84.2% 20%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  /* Theme-specific styles - Sandstone theme */
+  body.theme-sandstone .steps-indicator-active {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+    border-color: hsl(40 95% 50%);
+  }
+  
+  body.theme-sandstone .steps-indicator-completed {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+    border-color: hsl(40 95% 50%);
+  }
+  
+  body.theme-sandstone.dark .steps-indicator-active {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+    border-color: hsl(40 95% 50%);
+  }
+  
+  body.theme-sandstone.dark .steps-indicator-completed {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+    border-color: hsl(40 95% 50%);
+  }
+  
+  /* Theme-specific styles - Steel theme */
+  body.theme-steel .steps-indicator-active {
+    background-color: hsl(170 80% 30%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(170 80% 30%);
+  }
+  
+  body.theme-steel .steps-indicator-completed {
+    background-color: hsl(170 80% 30%);
+    color: hsl(0 0% 98%);
+    border-color: hsl(170 80% 30%);
+  }
+  
+  body.theme-steel.dark .steps-indicator-active {
+    background-color: hsl(0 0% 98%);
+    color: hsl(170 80% 30%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  body.theme-steel.dark .steps-indicator-completed {
+    background-color: hsl(0 0% 98%);
+    color: hsl(170 80% 30%);
+    border-color: hsl(0 0% 98%);
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .steps-indicator {
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.75rem;
+    }
+    
+    .steps-indicator-bullet {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    .steps-item:not(.steps-item-last)::after {
+      left: 0.875rem;
+    }
+    
+    .steps-content {
+      padding-left: 0.5rem;
+      margin-left: 0.5rem;
+    }
+  }

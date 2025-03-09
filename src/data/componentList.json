@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Accordion",
+    "href": "/docs/components/accordion",
+    "isNew": false
+  },
+  {
+    "title": "Accordion-enhanced",
+    "href": "/docs/components/accordion-enhanced",
+    "isNew": false
+  },
+  {
+    "title": "Alert",
+    "href": "/docs/components/alert",
+    "isNew": false
+  },
+  {
+    "title": "AlertDialog",
+    "href": "/docs/components/alertDialog",
+    "isNew": false
+  },
+  {
+    "title": "AspectRatio",
+    "href": "/docs/components/aspectRatio",
+    "isNew": false
+  },
+  {
+    "title": "Avatar",
+    "href": "/docs/components/avatar",
+    "isNew": false
+  },
+  {
+    "title": "Badge",
+    "href": "/docs/components/badge",
+    "isNew": false
+  },
+  {
+    "title": "Breadcrumb",
+    "href": "/docs/components/breadcrumb",
+    "isNew": false
+  },
+  {
+    "title": "Button",
+    "href": "/docs/components/button",
+    "isNew": false
+  },
+  {
+    "title": "Checkbox",
+    "href": "/docs/components/checkbox",
+    "isNew": false
+  },
+  {
+    "title": "Form",
+    "href": "/docs/components/form",
+    "isNew": false
+  },
+  {
+    "title": "Input",
+    "href": "/docs/components/input",
+    "isNew": false
+  },
+  {
+    "title": "Label",
+    "href": "/docs/components/label",
+    "isNew": false
+  },
+  {
+    "title": "RadioGroup",
+    "href": "/docs/components/radioGroup",
+    "isNew": false
+  },
+  {
+    "title": "Select",
+    "href": "/docs/components/select",
+    "isNew": false
+  },
+  {
+    "title": "Separator",
+    "href": "/docs/components/separator",
+    "isNew": false
+  },
+  {
+    "title": "Switch",
+    "href": "/docs/components/switch",
+    "isNew": false
+  },
+  {
+    "title": "Tabs",
+    "href": "/docs/components/tabs",
+    "isNew": false
+  }
+]

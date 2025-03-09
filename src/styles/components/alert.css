@@ -1,0 +1,348 @@
+/* src/styles/components/alertDialog.css */
+
+/* Alert Dialog Base Styles */
+.alert-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    animation-duration: 200ms;
+  }
+  
+  .alert-dialog-overlay[data-state="open"] {
+    animation-name: fadeIn;
+  }
+  
+  .alert-dialog-overlay[data-state="closed"] {
+    animation-name: fadeOut;
+  }
+  
+  .alert-dialog-content {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    z-index: 1055 !important; /* Higher than overlay */
+    width: 100% !important;
+    max-width: 500px !important;
+    transform: translate(-50%, -50%) !important;
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    padding: 1rem !important;
+    animation-duration: 200ms !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .alert-dialog-content[data-state="open"] {
+    animation-name: dialogFadeIn;
+  }
+  
+  .alert-dialog-content[data-state="closed"] {
+    animation-name: dialogFadeOut;
+  }
+  
+  .alert-dialog-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+  }
+  
+  .alert-dialog-footer {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .alert-dialog-header {
+      text-align: left;
+    }
+    
+    .alert-dialog-footer {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+  }
+  
+  .alert-dialog-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+  }
+  
+  .alert-dialog-description {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 0.5rem;
+  }
+  
+  .alert-dialog-action {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+  }
+  
+  .alert-dialog-action:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+  
+  .alert-dialog-action:active {
+    background-color: hsl(var(--primary-active));
+  }
+  
+  .alert-dialog-cancel {
+    background-color: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .alert-dialog-cancel:hover {
+    background-color: hsl(var(--muted));
+    border-color: currentColor;
+  }
+  
+  /* Theme-based Styling */
+  .themed-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .themed-dialog-content {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  .themed-dialog-header {
+    color: hsl(var(--foreground));
+  }
+  
+  .themed-dialog-footer {
+    border-top-color: hsl(var(--border));
+  }
+  
+  .themed-dialog-title {
+    color: hsl(var(--foreground));
+  }
+  
+  .themed-dialog-description {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .themed-dialog-action {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  .themed-dialog-action:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+  
+  .themed-dialog-action:active {
+    background-color: hsl(var(--primary-active));
+  }
+  
+  .themed-dialog-cancel {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  .themed-dialog-cancel:hover {
+    background-color: hsl(var(--muted) / 0.5);
+  }
+  
+  /* ============ DARK MODE FIXES ============ */
+  body.dark .themed-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  body.dark .themed-dialog-content {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border-color: hsl(var(--border));
+  }
+  
+  body.dark .themed-dialog-action {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  body.dark .themed-dialog-action:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+  
+  body.dark .themed-dialog-cancel {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    background-color: transparent;
+  }
+  
+  body.dark .themed-dialog-cancel:hover {
+    background-color: hsl(var(--muted) / 0.3);
+  }
+  
+  /* Theme-specific accent color fixes */
+  body.theme-onyx.dark .themed-dialog-action {
+    color: hsl(220 90% 40%);
+  }
+  
+  body.theme-fog.dark .themed-dialog-action {
+    color: hsl(190 70% 40%);
+  }
+  
+  body.theme-graphite.dark .themed-dialog-action {
+    color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-sandstone.dark .themed-dialog-action {
+    color: hsl(20 14.3% 4.1%);
+  }
+  
+  body.theme-steel.dark .themed-dialog-action {
+    color: hsl(170 80% 30%);
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  @keyframes dialogFadeIn {
+    from { 
+      opacity: 0; 
+      transform: translate(-50%, -48%) scale(0.95);
+    }
+    to { 
+      opacity: 1; 
+      transform: translate(-50%, -50%) scale(1);
+      visibility: visible;
+    }
+  }
+  
+  @keyframes dialogFadeOut {
+    from { 
+      opacity: 1; 
+      transform: translate(-50%, -50%) scale(1);
+      visibility: visible;
+    }
+    to { 
+      opacity: 0; 
+      transform: translate(-50%, -48%) scale(0.95);
+      visibility: hidden;
+    }
+  }
+  
+  /* Animation speed variations */
+  .alert-dialog-animation-fast[data-state="open"],
+  .alert-dialog-animation-fast[data-state="open"] + div .alert-dialog-content[data-state="open"] {
+    animation-duration: 150ms !important;
+  }
+  
+  .alert-dialog-animation-slow[data-state="open"],
+  .alert-dialog-animation-slow[data-state="open"] + div .alert-dialog-content[data-state="open"] {
+    animation-duration: 350ms !important;
+  }
+  
+  /* Variants */
+  .alert-dialog-bordered {
+    border-width: 3px !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+  
+  .alert-dialog-elevated {
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  /* Icon styles */
+  .alert-dialog-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Action button variants - these enhance Bootstrap's default styles */
+  .themed-dialog-action.btn-danger {
+    background-color: hsl(var(--destructive)) !important;
+    color: hsl(var(--destructive-foreground)) !important;
+    border-color: hsl(var(--destructive)) !important;
+  }
+  
+  .themed-dialog-action.btn-danger:hover {
+    background-color: hsl(var(--destructive) / 0.9) !important;
+  }
+  
+  .themed-dialog-action.btn-success {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: #28a745 !important;
+  }
+  
+  .themed-dialog-action.btn-success:hover {
+    background-color: #218838 !important;
+  }
+  
+  .themed-dialog-action.btn-secondary {
+    background-color: hsl(var(--secondary)) !important;
+    color: hsl(var(--secondary-foreground)) !important;
+    border-color: hsl(var(--secondary)) !important;
+  }
+  
+  .themed-dialog-action.btn-secondary:hover {
+    background-color: hsl(var(--secondary) / 0.9) !important;
+  }
+  
+  .themed-dialog-action.btn-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+    border-color: #ffc107 !important;
+  }
+  
+  .themed-dialog-action.btn-warning:hover {
+    background-color: #e0a800 !important;
+  }
+  
+  .themed-dialog-action.btn-info {
+    background-color: #17a2b8 !important;
+    color: white !important;
+    border-color: #17a2b8 !important;
+  }
+  
+  .themed-dialog-action.btn-info:hover {
+    background-color: #138496 !important;
+  }
+  
+  /* Fix for potential Bootstrap modal conflicts */
+  .modal-dialog-centered {
+    display: flex !important;
+    align-items: center !important;
+    min-height: calc(100% - 1rem) !important;
+    margin: 0 auto !important;
+    height: 100% !important;
+    max-width: 500px !important;
+    pointer-events: none !important;
+    position: relative !important;
+    width: auto !important;
+    z-index: 1055 !important;
+  }
+  
+  .modal-dialog-centered .modal-content {
+    pointer-events: auto !important;
+    width: 100% !important;
+  }

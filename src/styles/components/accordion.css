@@ -1,0 +1,160 @@
+/* src\styles\components\accordion.css */
+
+/* Accordion Base Styles */
+.accordion {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  
+  .accordion-item {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .accordion-button {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+  
+  .accordion-body {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+  
+  /* Hide the default Bootstrap arrow */
+  .accordion-button::after {
+    display: none !important;
+    content: none !important;
+  }
+  
+  /* Rotate the Lucide ChevronDown icon when open */
+  .accordion-button[data-state="open"] svg {
+    transform: rotate(180deg);
+  }
+  
+  /* Themed Overrides (for additional styling) */
+  .themed-accordion-button {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  .themed-accordion-button:not(.collapsed) {
+    background-color: hsl(var(--primary) / 0.1) !important;
+    color: hsl(var(--primary)) !important;
+    box-shadow: inset 0 -1px 0 hsl(var(--border)) !important;
+  }
+  
+  .themed-accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+  
+  .themed-border {
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  .themed-accordion-body {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .themed-chevron {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  /* ============ DARK MODE FIXES ============ */
+  /* Fix to target body.theme-* and body.dark */
+  
+  /* Dark Mode - General */
+  body.dark .accordion-button,
+  body.dark .themed-accordion-button {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important; /* This ensures text is light in dark mode */
+  }
+  
+  body.dark .accordion-button:not(.collapsed),
+  body.dark .themed-accordion-button:not(.collapsed) {
+    background-color: hsl(var(--primary) / 0.1) !important;
+    box-shadow: inset 0 -1px 0 hsl(var(--border)) !important;
+  }
+  
+  /* This is a key fix for the dark mode active color issue */
+  body.dark .accordion-button:not(.collapsed),
+  body.dark .themed-accordion-button:not(.collapsed) {
+    color: hsl(var(--foreground)) !important; /* Use foreground for better contrast */
+  }
+  
+  /* Fix for each theme - This ensures each theme gets its proper accent color */
+  body.theme-onyx.dark .accordion-button:not(.collapsed) {
+    color: hsl(0 0% 98%) !important; /* Light text for dark backgrounds */
+    border-left: 4px solid hsl(220 90% 40%) !important; /* Accent color as border */
+  }
+  
+  body.theme-fog.dark .accordion-button:not(.collapsed) {
+    color: hsl(0 0% 98%) !important;
+    border-left: 4px solid hsl(190 70% 40%) !important;
+  }
+  
+  body.theme-graphite.dark .accordion-button:not(.collapsed) {
+    color: hsl(0 0% 98%) !important;
+    border-left: 4px solid hsl(0 84.2% 20%) !important;
+  }
+  
+  body.theme-sandstone.dark .accordion-button:not(.collapsed) {
+    color: hsl(60 9.1% 97.8%) !important; /* Sandstone has a different text color */
+    border-left: 4px solid hsl(40 95% 50%) !important;
+  }
+  
+  body.theme-steel.dark .accordion-button:not(.collapsed) {
+    color: hsl(0 0% 98%) !important;
+    border-left: 4px solid hsl(170 80% 30%) !important;
+  }
+  
+  /* Fix for trigger text in dark mode to ensure contrast */
+  body.dark .accordion-button,
+  body.dark .themed-accordion-button {
+    color: hsl(var(--foreground)) !important; /* Ensures light text on dark backgrounds */
+  }
+  
+  /* Fix for border colors */
+  body.dark .themed-border {
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  /* Fix for accordion body */
+  body.dark .themed-accordion-body {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  /* Fix for accordion item */
+  body.dark .accordion-item {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  /* Fix for focus state */
+  body.dark .themed-accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem hsl(var(--ring) / 0.25) !important;
+    border-color: hsl(var(--accent)) !important;
+  }
+  
+  /* Fix for chevron color */
+  body.dark .themed-chevron {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  /* Dark mode overrides for when accordion is open */
+  body.dark .accordion-button[data-state="open"] .themed-chevron {
+    transform: rotate(180deg);
+  }

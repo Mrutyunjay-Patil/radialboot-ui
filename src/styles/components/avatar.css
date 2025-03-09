@@ -1,0 +1,147 @@
+/* Theme-specific colors for avatar fallbacks */
+/* These ensure complementary colors for each theme */
+.theme-onyx .themed-avatar-fallback {
+    background-color: hsl(220 90% 40%);
+    color: hsl(0 0% 98%);
+  }
+  
+  .theme-fog .themed-avatar-fallback {
+    background-color: hsl(190 70% 40%);
+    color: hsl(0 0% 98%);
+  }
+  
+  .theme-graphite .themed-avatar-fallback {
+    background-color: hsl(0 84.2% 20%);
+    color: hsl(0 0% 98%);
+  }
+  
+  .theme-sandstone .themed-avatar-fallback {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+  }
+  
+  .theme-steel .themed-avatar-fallback {
+    background-color: hsl(170 80% 30%);
+    color: hsl(0 0% 98%);
+  }
+  
+  /* Dark mode color overrides for specific themes */
+  body.theme-onyx.dark .themed-avatar-fallback {
+    background-color: hsl(0 0% 98%);
+    color: hsl(220 90% 40%);
+  }
+  
+  body.theme-fog.dark .themed-avatar-fallback {
+    background-color: hsl(0 0% 98%);
+    color: hsl(190 70% 40%);
+  }
+  
+  body.theme-graphite.dark .themed-avatar-fallback {
+    background-color: hsl(0 0% 98%);
+    color: hsl(0 84.2% 20%);
+  }
+  
+  body.theme-sandstone.dark .themed-avatar-fallback {
+    background-color: hsl(40 95% 50%);
+    color: hsl(20 14.3% 4.1%);
+  }
+  
+  body.theme-steel.dark .themed-avatar-fallback {
+    background-color: hsl(0 0% 98%);
+    color: hsl(170 80% 30%);
+  }/* src/styles/components/avatar.css */
+  
+  /* Base styles */
+  .avatar {
+    height: 2.5rem; /* h-10 equivalent */
+    width: 2.5rem; /* w-10 equivalent */
+  }
+  
+  /* Size variants */
+  .avatar-sm {
+    height: 1.875rem; /* 30px */
+    width: 1.875rem; /* 30px */
+  }
+  
+  .avatar-md {
+    height: 2.5rem; /* 40px - default */
+    width: 2.5rem; /* 40px - default */
+  }
+  
+  .avatar-lg {
+    height: 3.125rem; /* 50px */
+    width: 3.125rem; /* 50px */
+  }
+  
+  .avatar-xl {
+    height: 5rem; /* 80px */
+    width: 5rem; /* 80px */
+  }
+  
+  /* Theme-based styling */
+  .themed-avatar {
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--muted));
+  }
+  
+  .themed-avatar-fallback {
+    background-color: hsl(var(--primary)); /* Using primary theme color */
+    color: hsl(var(--primary-foreground)); /* Using complementary text color */
+  }
+  
+  /* Status indicators */
+  .avatar-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--background));
+  }
+  
+  .avatar-status-online {
+    background-color: #28a745; /* Bootstrap success color */
+  }
+  
+  .avatar-status-busy {
+    background-color: #dc3545; /* Bootstrap danger color */
+  }
+  
+  .avatar-status-away {
+    background-color: #ffc107; /* Bootstrap warning color */
+  }
+  
+  .avatar-status-offline {
+    background-color: #6c757d; /* Bootstrap secondary color */
+  }
+  
+  /* Avatar group styling */
+  .avatar-group {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .avatar-group .avatar:not(:first-child) {
+    margin-left: -0.75rem;
+    border: 2px solid hsl(var(--background));
+  }
+  
+  /* Dark mode adjustments */
+  body.dark .themed-avatar {
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--muted));
+  }
+  
+  body.dark .themed-avatar-fallback {
+    background-color: hsl(var(--primary)); /* Using primary theme color */
+    color: hsl(var(--primary-foreground)); /* Using complementary text color */
+  }
+  
+  body.dark .avatar-status {
+    border-color: hsl(var(--background));
+  }
+  
+  body.dark .avatar-group .avatar:not(:first-child) {
+    border-color: hsl(var(--background));
+  }

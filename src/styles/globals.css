@@ -1,0 +1,20 @@
+/* src/styles/globals.css */
+
+/* Import our theme definitions */
+@import "./themes.css";
+
+/* Set default theme (you can change this via JavaScript) */
+:root {
+  /* Optionally, set fallback values if needed */
+}
+
+/* Apply theme background and text colors using the tokens */
+body.theme-onyx,
+body.theme-fog,
+body.theme-graphite,
+body.theme-sandstone,
+body.theme-steel {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
